@@ -27,8 +27,6 @@
     settings = {
     MusicFolder = "/home/huybin1234b/data/music";
     LogLevel="debug";
-
-
       };
     };
   # environment varible
