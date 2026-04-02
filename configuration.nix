@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs,  ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports =
@@ -30,7 +30,7 @@
       };
     };
   # disable protect home for navidrome
-  systemd.services.navidrome.serviceConfig.BindReadOnlyPaths="/home/huybin1234b/data/music";
+  systemd.services.navidrome.serviceConfig.ProtectHome = lib.mkForce "tmpfs";
   # environment varible
   environment.variables ={
   GTK_IM_MODULE="fcitx";
@@ -239,6 +239,12 @@
 
   # Enable NUR
   nixpkgs.overlays = [ inputs.nur.overlays.default ];
+
+  # They doing anything but give us great flatpak and appimage support:/
+  programs.appimage = {
+  enable = true;
+  binfmt = true;
+};
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
