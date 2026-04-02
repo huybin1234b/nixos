@@ -225,6 +225,8 @@
       { appId="org.nickvision.tubeconverter"; origin="flathub"; } # 6. Fixed appID to appId
       { appId="io.github.diegoivanme.flowtime"; origin="flathub"; }
       { appId="it.mijorus.gearlever"; origin="flathub"; }
+      { appId="com.usebottles.bottles"; origin="flathub"; }
+      { appId="com.vysp3r.ProtonPlus"; origin="flathub"; }
       # To local install
       #{
       #  appId = "com.custom.MyApp";
