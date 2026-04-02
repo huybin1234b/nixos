@@ -29,6 +29,8 @@
     LogLevel="debug";
       };
     };
+  # disable protect home for navidrome
+  systemd.services.navidrome.serviceConfig.BindReadOnlyPaths="/home/huybin1234b/data/music";
   # environment varible
   environment.variables ={
   GTK_IM_MODULE="fcitx";
