@@ -111,6 +111,7 @@
     efiSupport = true;
     enableEditor = true;
     maxGenerations = 30;
+    efiInstallAsRemovable=true;
     extraEntries = "
     /Windows
     protocol: efi
