@@ -100,8 +100,8 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
-#  boot.loader.systemd-boot.enable = true;
-#  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.efi.canTouchEfiVariables = false;
     # Bootloader setup for limine
     boot.loader.limine ={
     enable = true;
