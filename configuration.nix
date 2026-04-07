@@ -101,7 +101,7 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = false;
-  boot.loader.efi.canTouchEfiVariables = false;
+  boot.loader.efi.canTouchEfiVariables = true;
     # Bootloader setup for limine
     boot.loader.limine ={
     enable = true;
