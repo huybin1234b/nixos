@@ -103,7 +103,7 @@
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi ={
   canTouchEfiVariables = true;
-  efiSysMountPoint = "/boot/EFI/limine/BOOTX64.EFI";
+  efiSysMountPoint = "/boot/EFI/limine";
   };
     # Bootloader setup for limine
     boot.loader.limine ={
