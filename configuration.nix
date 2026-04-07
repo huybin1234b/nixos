@@ -107,7 +107,7 @@
     enable = true;
     efiSupport = true;
     enableEditor = true;
-    maxGenerations = "30";
+    maxGenerations = 30;
     extraEntries = "
     /Windows
     protocol: efi
