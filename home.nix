@@ -23,7 +23,7 @@
         email = "officalhuybin1234b@duck.com";
       };
       safe = {
-        directory = "/etc/nixos";
+        directory = "*";
       };
     };
   };
@@ -32,6 +32,13 @@
   useFlake = true;
   flakeDir = "/etc/nixos";
   frequency = "daily";
+  };
+  # Fish config come here
+  programs.fish = {
+  enable =true;
+  #plugins = [
+  #    {}
+  #  ];
   };
   # Setup github-cli
   programs.gh = {

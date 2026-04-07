@@ -289,12 +289,16 @@
     cobang
     inputs.freesmlauncher.packages.${pkgs.system}.default
     inputs.nur.legacyPackages.${pkgs.stdenv.hostPlatform.system}.repos.forkprince.helium-nightly
+    inputs.nur.legacyPackages.${pkgs.stdenv.hostPlatform.system}.repos.forkprince.fluxer-bin
     yt-dlp
     haruna
     nixfmt
     nixfmt-tree
     krita
     navidrome
+    eloquent
+    lmstudio
+    python315
   ];
 
   # Default browser
