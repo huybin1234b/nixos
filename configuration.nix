@@ -103,7 +103,7 @@
 #  boot.loader.systemd-boot.enable = true;
 #  boot.loader.efi.canTouchEfiVariables = true;
     # Bootloader setup for limine
-    boot.loader ={
+    boot.loader.limine ={
     enable = true;
     efiSupport = true;
     enableEditor = true;
