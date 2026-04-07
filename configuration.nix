@@ -99,27 +99,30 @@
   # Flakes + Home Manager support
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Bootloader
+  # Disable systemd-boot
   boot.loader.systemd-boot.enable = false;
-  boot.loader.efi ={
-  canTouchEfiVariables = true;
-  efiSysMountPoint = "/boot/EFI/limine";
+
+  # Base EFI settings
+  boot.loader.efi = {
+    canTouchEfiVariables = true;
+    efiSysMountPoint = "/boot";
   };
-    # Bootloader setup for limine
-    boot.loader.limine ={
+
+  # Bootloader setup for Limine
+  boot.loader.limine = {
     enable = true;
     efiSupport = true;
     enableEditor = true;
     maxGenerations = 30;
-    efiInstallAsRemovable=true;
-    extraEntries = "
-    /Windows
-    protocol: efi
-    path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
-    ";
+    efiInstallAsRemovable = false;
 
-    };
-
+    # Windows dual-boot entry pointing to nvme0n1p5
+    extraEntries = ''
+      /Windows
+          protocol: efi
+          path: guid(78d576b7-bf19-4375-b3c3-1e508ff3315a):/EFI/Microsoft/Boot/bootmgfw.efi
+    '';
+  };
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
