@@ -99,9 +99,12 @@
   # Flakes + Home Manager support
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Bootloader.
+  # Bootloader
   boot.loader.systemd-boot.enable = false;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi ={
+  canTouchEfiVariables = true;
+  efiSysMountPoint = "/boot/EFI/limine/BOOTX64.EFI";
+  };
     # Bootloader setup for limine
     boot.loader.limine ={
     enable = true;
