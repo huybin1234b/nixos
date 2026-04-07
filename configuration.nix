@@ -100,8 +100,21 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+#  boot.loader.systemd-boot.enable = true;
+#  boot.loader.efi.canTouchEfiVariables = true;
+    # Bootloader setup for limine
+    boot.loader ={
+    enable = true;
+    efiSupport = true;
+    enableEditor = true;
+    maxGenerations = "30";
+    extraEntries = "
+    /Windows
+    protocol: efi
+    path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+    ";
+
+    };
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -299,6 +312,7 @@
     eloquent
     lmstudio
     python315
+    limine-full
   ];
 
   # Default browser
