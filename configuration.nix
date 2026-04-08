@@ -60,7 +60,7 @@
     "Z /etc/nixos - huybin1234b users -"
   ];
   # Set automatic update | Rebuild
-  system.autoUpgrade = {
+  stdenv.hostPlatform.system.autoUpgrade = {
     enable = true;
     operation = "switch"; # or "boot" to reboot later
     dates = "daily"; # or "04:40" for specific time
@@ -344,7 +344,7 @@
     git
     gh
     cobang
-    inputs.freesmlauncher.packages.${pkgs.system}.default
+    inputs.freesmlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.nur.legacyPackages.${pkgs.stdenv.hostPlatform.system}.repos.forkprince.helium-nightly
     inputs.nur.legacyPackages.${pkgs.stdenv.hostPlatform.system}.repos.forkprince.fluxer-bin
     yt-dlp
@@ -396,6 +396,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.11"; # Did you read the comment?
+  stdenv.hostPlatform.system.stateVersion = "25.11"; # Did you read the comment?
 
 }
