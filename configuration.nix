@@ -60,7 +60,7 @@
     "Z /etc/nixos - huybin1234b users -"
   ];
   # Set automatic update | Rebuild
-  stdenv.hostPlatform.system.autoUpgrade = {
+  system.autoUpgrade = {
     enable = true;
     operation = "switch"; # or "boot" to reboot later
     dates = "daily"; # or "04:40" for specific time
