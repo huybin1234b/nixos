@@ -85,6 +85,9 @@
       "--modified"
       "--octal-permissions"
       "--git-repos"
+      "--absolute"
+      "--follow-symlinks"
+      "--long"
       "-@"
       "-Z"
     ];
