@@ -82,7 +82,7 @@
       "--header"
       "--all"
       "--hyperlink"
-      " --follow-symlinks"
+      "--follow-symlinks"
       "--modified"
       "--octal-permissions"
       "--git-repos"
