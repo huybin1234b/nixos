@@ -8,6 +8,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-cli.url = "github:nix-community/nixos-cli";
+    nix-alien.url = "github:thiagokokada/nix-alien";
     fcitx5-lotus = {
       url = "github:LotusInputMethod/fcitx5-lotus";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +27,7 @@
       self,
       nixpkgs,
       nur,
+      nix-alien,
       ...
     }@inputs:
     {
@@ -37,7 +40,18 @@
           ./configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
+          inputs.nixos-cli.nixosModules.nixos-cli
+
           { nixpkgs.config.allowUnfree = true; }
+          (
+            { pkgs, ... }:
+            {
+              environment.systemPackages = [
+                inputs.nix-alien.packages.${pkgs.system}.nix-alien
+              ];
+              programs.nix-ld.enable = true;
+            }
+          )
         ];
       };
     };
