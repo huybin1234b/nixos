@@ -76,7 +76,7 @@
     enableBashIntegration = true;
     git = true;
     colors = "always";
-    icons = true;
+    icons = "always";
     extraOptions = [
       "--header"
       "--all"
