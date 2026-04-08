@@ -69,6 +69,27 @@
       };
     };
   };
+  # Enable eza
+  programs.eza = {
+    enable = true;
+    enableFishIntegration = true;
+    enableBashIntegration = true;
+    git = true;
+    color = ture;
+    icon = true;
+    extraOption = [
+      "--group-directories-first"
+      "--header"
+      "--all"
+      "--hyperlink"
+      " --follow-symlinks"
+      "--modified"
+      "--octal-permissions"
+      "--git-repos"
+      "-@"
+      "-Z"
+    ];
+  };
   # Enable zoxide
   programs.zoxide.enable = true;
   programs.zoxide.enableFishIntegration = true;
