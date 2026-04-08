@@ -71,6 +71,8 @@
   };
   # Enable zoxide
   programs.zoxide.enable = true;
+  programs.zoxide.enableFishIntegration = true;
+  programs.zoxide.enableBashIntegration = true;
   # Set up declaretive shell eyes candy thing
   home.activation.configure-tide = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ${pkgs.fish}/bin/fish -c "tide configure --auto --style=Lean --prompt_colors='True color' --show_time='24-hour format' --lean_prompt_height='Two lines' --prompt_connection=Disconnected --prompt_spacing=Sparse --icons='Many icons' --transient=No"
