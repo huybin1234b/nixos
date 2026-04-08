@@ -75,7 +75,7 @@
     enableFishIntegration = true;
     enableBashIntegration = true;
     git = true;
-    colors = true;
+    colors = always;
     icons = true;
     extraOptions = [
       "--group-directories-first"
