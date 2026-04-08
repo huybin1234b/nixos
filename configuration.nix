@@ -359,7 +359,8 @@
     limine-full
     niv
     nh
-
+    fishPlugins.done
+    fishPlugins.tide
   ];
 
   # Default browser

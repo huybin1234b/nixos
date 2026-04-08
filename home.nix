@@ -36,9 +36,33 @@
   # Fish config come here
   programs.fish = {
     enable = true;
-    #plugins = [
-    #    {}
-    #  ];
+    plugins = [
+      # example of fetch plugins straight from github
+      #name = "z";
+      #src = pkgs.fetchFromGitHub {
+      #    owner = "jethrokuan";
+      #    repo = "z";
+      #    rev = "ddeb28a7b6a1f0ec6dae40c636e5ca4908ad160a";
+      #    sha256 = "0c5i7sdrsp0q3vbziqzdyqn4fmp235ax4mn4zslrswvn8g3fvdyh";
+      #  };
+    ];
+    functions = {
+      nixos-rebuild-fmd = {
+        body = ''
+          read -l -P "Enter the commit message: " CommitMessage
+          nixfmt /etc/nixos/configuration.nix
+          nixfmt /etc/nixos/home.nix
+          nixfmt /etc/nixos/flake.nix
+          nixfmt /etc/nixos/hardware-configuration.nix
+          set -l CurrentDirectory (pwd)
+          cd /etc/nixos
+          git commit -m "$CommitMessage" -a
+          git push
+          cd "$CurrentDirectory"
+          sudo nixos-rebuild switch --flake /etc/nixos
+        '';
+      };
+    };
   };
   # Setup github-cli
   programs.gh = {
