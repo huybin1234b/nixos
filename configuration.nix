@@ -363,6 +363,7 @@
     fishPlugins.tide
     eza
     mpv
+    soundconverter
   ];
 
   # Default browser
