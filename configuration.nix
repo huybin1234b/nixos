@@ -362,6 +362,7 @@
     fishPlugins.done
     fishPlugins.tide
     eza
+    mpv
   ];
 
   # Default browser
