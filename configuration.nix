@@ -2,50 +2,56 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, lib, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-      inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+    inputs.fcitx5-lotus.nixosModules.fcitx5-lotus
+  ];
 
   # Enable Home-manager
   home-manager = {
-  # also pass inputs to home-manager modules
-  extraSpecialArgs = {inherit inputs;};
-  users = {
-    "huybin1234b" = import ./home.nix;
+    # also pass inputs to home-manager modules
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "huybin1234b" = import ./home.nix;
     };
   };
 
   # Navidome Sever setuo
-    services.navidrome = {
+  services.navidrome = {
     enable = true;
     settings = {
-    MusicFolder = "/home/huybin1234b/data/music";
-    LogLevel="debug";
-      };
+      MusicFolder = "/home/huybin1234b/data/music";
+      LogLevel = "debug";
     };
+  };
   # disable protect home for navidrome
   systemd.services.navidrome.serviceConfig.ProtectHome = lib.mkForce "tmpfs";
   # environment varible
-  environment.variables ={
-  GTK_IM_MODULE="fcitx";
-  QT_IM_MODULE="fcitx";
-  SDL_IM_MODULE="fcitx";
-  XMODIFIERS="@im=fcitx";
+  environment.variables = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    SDL_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
   };
 
   # Set Automated Gabage collection
   nix.gc = {
-  automatic = true;
-  dates = "daily";
-  options = "--delete-older-than 14d";
-  randomizedDelaySec = "45min";
-  persistent = true;
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 14d";
+    randomizedDelaySec = "45min";
+    persistent = true;
   };
 
   # Enforce user role and end the pain of the git
@@ -55,38 +61,45 @@
   ];
   # Set automatic update | Rebuild
   system.autoUpgrade = {
-  enable = true;
-  operation = "switch"; # or "boot" to reboot later
-  dates = "daily";      # or "04:40" for specific time
-  flake = "/etc/nixos/flake.nix"; # optional, for flake users
-  allowReboot = false;  # reboot if kernel/modules changed
-  randomizedDelaySec = "1h"; # optional delay to avoid thundering herd
-  persistent = true;
-};
+    enable = true;
+    operation = "switch"; # or "boot" to reboot later
+    dates = "daily"; # or "04:40" for specific time
+    flake = "/etc/nixos/flake.nix"; # optional, for flake users
+    allowReboot = false; # reboot if kernel/modules changed
+    randomizedDelaySec = "1h"; # optional delay to avoid thundering herd
+    persistent = true;
+  };
   # === Fcitx5-lotus (now correctly imported via flake) ===
   services.fcitx5-lotus = {
-   enable = true;
+    enable = true;
     user = "huybin1234b";
   };
   i18n.inputMethod = {
-   type = "fcitx5";
-   enable = true;
-   fcitx5.addons = with pkgs; [
-     fcitx5-mozc
-     fcitx5-gtk
-   ];
- };
- # Mounting for data and windows partition
+    type = "fcitx5";
+    enable = true;
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+      fcitx5-gtk
+    ];
+  };
+  # Mounting for data and windows partition
   fileSystems."/home/huybin1234b/data" = {
     device = "/dev/disk/by-uuid/8dd4575c-9bcd-b06f-92f0-1fe360232b87";
     fsType = "btrfs";
-    options = [ "nofail" "user" ];
+    options = [
+      "nofail"
+      "user"
+    ];
   };
 
   fileSystems."/home/huybin1234b/windows" = {
     device = "/dev/disk/by-uuid/565A603B5A601A4F";
     fsType = "ntfs-3g";
-    options = [ "nofail" "user" "uid=1000" ];
+    options = [
+      "nofail"
+      "user"
+      "uid=1000"
+    ];
   };
 
   # Enable OpenTabletDriver
@@ -97,7 +110,10 @@
   boot.kernelModules = [ "uinput" ];
   hardware.opentabletdriver.daemon.enable = true;
   # Flakes + Home Manager support
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Disable systemd-boot
   boot.loader.systemd-boot.enable = false;
@@ -198,10 +214,13 @@
   users.users.huybin1234b = {
     isNormalUser = true;
     description = "huybin1234b";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -224,7 +243,8 @@
     # 2. Update options must be nested inside 'update'
     update = {
       onActivation = true;
-      auto = { # 3. Changed [ ] to { }
+      auto = {
+        # 3. Changed [ ] to { }
         enable = true;
         onCalendar = "daily"; # 4. Fixed spelling
       };
@@ -232,21 +252,36 @@
 
     remotes = [
       {
-        name="flathub";
-        location="https://dl.flathub.org/repo/flathub.flatpakrepo";
+        name = "flathub";
+        location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
       } # 5. Removed the semicolon here!
       {
-        name="flathub-beta";
-        location="https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
+        name = "flathub-beta";
+        location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo";
       } # 5. Removed the semicolon here!
     ];
 
     packages = [
-      { appId="org.nickvision.tubeconverter"; origin="flathub"; } # 6. Fixed appID to appId
-      { appId="io.github.diegoivanme.flowtime"; origin="flathub"; }
-      { appId="it.mijorus.gearlever"; origin="flathub"; }
-      { appId="com.usebottles.bottles"; origin="flathub"; }
-      { appId="com.vysp3r.ProtonPlus"; origin="flathub"; }
+      {
+        appId = "org.nickvision.tubeconverter";
+        origin = "flathub";
+      } # 6. Fixed appID to appId
+      {
+        appId = "io.github.diegoivanme.flowtime";
+        origin = "flathub";
+      }
+      {
+        appId = "it.mijorus.gearlever";
+        origin = "flathub";
+      }
+      {
+        appId = "com.usebottles.bottles";
+        origin = "flathub";
+      }
+      {
+        appId = "com.vysp3r.ProtonPlus";
+        origin = "flathub";
+      }
       # To local install
       #{
       #  appId = "com.custom.MyApp";
@@ -264,16 +299,16 @@
 
   # They doing anything but give us great flatpak and appimage support:/
   programs.appimage = {
-  enable = true;
-  binfmt = true;
-};
+    enable = true;
+    binfmt = true;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  floorp-bin
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    floorp-bin
     neovim
     vimPlugins.LazyVim
     brave

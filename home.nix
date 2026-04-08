@@ -15,7 +15,7 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "25.11"; # Please read the comment before changing.
-   programs.git = {
+  programs.git = {
     enable = true;
     settings = {
       user = {
@@ -28,57 +28,57 @@
     };
   };
   services.home-manager.autoUpgrade = {
-  enable = true;
-  useFlake = true;
-  flakeDir = "/etc/nixos";
-  frequency = "daily";
+    enable = true;
+    useFlake = true;
+    flakeDir = "/etc/nixos";
+    frequency = "daily";
   };
   # Fish config come here
   programs.fish = {
-  enable =true;
-  #plugins = [
-  #    {}
-  #  ];
+    enable = true;
+    #plugins = [
+    #    {}
+    #  ];
   };
   # Setup github-cli
   programs.gh = {
-  enable = true;
+    enable = true;
 
   };
   # Config for the terminal
-  programs.ghostty ={
-  enable = true;
-  themes = {
-    Toy-Chest = {
-    palette = [
-    "0=#2c3f58"
-    "1=#be2d26"
-    "2=#1a9172"
-    "3=#db8e27"
-    "4=#325d96"
-    "5=#8a5edc"
-    "6=#35a08f"
-    "7=#23d183"
-    "8=#336889"
-    "9=#dd5944"
-    "10=#31d07b"
-    "11=#e7d84b"
-    "12=#34a6da"
-    "13=#ae6bdc"
-    "14=#42c3ae"
-    "15=#d5d5d5"
-    ];
-    background = "#24364b";
-    foreground = "#31d07b";
-    cursor-color = "#d5d5d5";
-    cursor-text = "#141c25";
-    selection-background = "#5f217a";
-    selection-foreground = "#d5d5d5";
+  programs.ghostty = {
+    enable = true;
+    themes = {
+      Toy-Chest = {
+        palette = [
+          "0=#2c3f58"
+          "1=#be2d26"
+          "2=#1a9172"
+          "3=#db8e27"
+          "4=#325d96"
+          "5=#8a5edc"
+          "6=#35a08f"
+          "7=#23d183"
+          "8=#336889"
+          "9=#dd5944"
+          "10=#31d07b"
+          "11=#e7d84b"
+          "12=#34a6da"
+          "13=#ae6bdc"
+          "14=#42c3ae"
+          "15=#d5d5d5"
+        ];
+        background = "#24364b";
+        foreground = "#31d07b";
+        cursor-color = "#d5d5d5";
+        cursor-text = "#141c25";
+        selection-background = "#5f217a";
+        selection-foreground = "#d5d5d5";
 
       };
-  };
-  enableBashIntegration = true;
-  enableFishIntegration = true;
+    };
+    enableBashIntegration = true;
+    enableFishIntegration = true;
   };
   # The home.packages option allows you to install Nix packages into your
   # environment.
