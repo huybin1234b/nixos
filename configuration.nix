@@ -226,6 +226,8 @@
 
   # Enable Fish shell
   programs.fish.enable = true;
+  users.defaultUserShell = pkgs.fish;
+  programs.command-not-found.enable = false;
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -355,6 +357,9 @@
     lmstudio
     python315
     limine-full
+    niv
+    nh
+
   ];
 
   # Default browser
