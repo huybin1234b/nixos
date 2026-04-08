@@ -77,7 +77,7 @@
     git = true;
     colors = true;
     icons = true;
-    extraOption = [
+    extraOptions = [
       "--group-directories-first"
       "--header"
       "--all"
