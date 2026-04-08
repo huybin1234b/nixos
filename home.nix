@@ -78,7 +78,6 @@
     colors = "always";
     icons = true;
     extraOptions = [
-      "--group-directories-first"
       "--header"
       "--all"
       "--hyperlink"
