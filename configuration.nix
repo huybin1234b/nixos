@@ -361,6 +361,7 @@
     nh
     fishPlugins.done
     fishPlugins.tide
+    exa
   ];
 
   # Default browser
