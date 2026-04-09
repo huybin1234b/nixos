@@ -364,6 +364,8 @@
     eza
     mpv
     soundconverter
+    antigravity
+    inputs.antigravity-manager.packages.${pkgs.stdenv.hostPlatform.sytem}.default
   ];
 
   # Default browser

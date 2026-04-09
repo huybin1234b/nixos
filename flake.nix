@@ -15,6 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     freesmlauncher.url = "github:FreesmTeam/FreesmLauncher/develop";
+    antigravity-manager.url = "github:Draculabo/AntigravityManager";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nur = {
       url = "github:nix-community/NUR";
