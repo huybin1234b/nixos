@@ -183,7 +183,11 @@
     layout = "us";
     variant = "";
   };
-
+  # Tailscale
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "both";
+  };
   # Enable Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
