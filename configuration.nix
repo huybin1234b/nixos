@@ -365,7 +365,7 @@
     mpv
     soundconverter
     antigravity
-    inputs.antigravity-manager.packages.${pkgs.stdenv.hostPlatform.sytem}.default
+    inputs.antigravity-manager.packages.${pkgs.stdenv.hostPlatform.system}.default
     kiro
     kiro-cli
     gemini-cli
