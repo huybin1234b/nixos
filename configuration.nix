@@ -369,6 +369,8 @@
     kiro
     kiro-cli
     gemini-cli
+    cryptomator
+    cryptomator-cli
   ];
 
   # Default browser
