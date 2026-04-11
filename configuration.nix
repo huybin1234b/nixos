@@ -375,6 +375,7 @@
     gemini-cli
     cryptomator
     cryptomator-cli
+    inputs.nur.legacyPackages.${pkgs.stdenv.hostPlatform.system}.repos.forkprince.ab-download-manager
   ];
 
   # Default browser
