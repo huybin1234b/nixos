@@ -289,7 +289,7 @@
         origin = "flathub";
       }
       {
-        appID = "org.prismlauncher.PrismLauncher";
+        appId = "org.prismlauncher.PrismLauncher";
         origin = "flathub";
       }
       # To local install
