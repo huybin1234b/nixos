@@ -61,6 +61,7 @@
           nixfmt /etc/nixos/hardware-configuration.nix
           set -l CurrentDirectory (pwd)
           cd /etc/nixos
+          nix flake update
           git commit -m "$CommitMessage" -a
           git push
           cd "$CurrentDirectory"

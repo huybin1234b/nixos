@@ -3,7 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,6 +32,7 @@
       nixpkgs,
       nur,
       nix-alien,
+      stylix,
       ...
     }@inputs:
     {
@@ -42,6 +46,7 @@
           inputs.home-manager.nixosModules.default
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.nixos-cli.nixosModules.nixos-cli
+          inputs.stylix.nixosModules.stylix
 
           { nixpkgs.config.allowUnfree = true; }
           (
