@@ -288,6 +288,10 @@
         appId = "com.vysp3r.ProtonPlus";
         origin = "flathub";
       }
+      {
+        appID = "org.prismlauncher.PrismLauncher";
+        origin = "flathub";
+      }
       # To local install
       #{
       #  appId = "com.custom.MyApp";
