@@ -134,9 +134,9 @@
 
     # Windows dual-boot entry pointing to nvme0n1p5
     extraEntries = ''
-      /Windows
-          protocol: efi
-          path: guid(78d576b7-bf19-4375-b3c3-1e508ff3315a):/EFI/Microsoft/Boot/bootmgfw.efi
+        /Windows
+      protocol: efi
+      path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
     '';
   };
   # Use latest kernel.
