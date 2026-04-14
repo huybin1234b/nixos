@@ -382,6 +382,7 @@
     gemini-cli
     cryptomator
     cryptomator-cli
+    gimp
     inputs.nur.legacyPackages.${pkgs.stdenv.hostPlatform.system}.repos.forkprince.ab-download-manager
   ];
 
